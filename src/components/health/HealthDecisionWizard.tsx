@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "@/hooks/use-toast";
+import vitaminaDImage from "@/assets/vitamina-d.webp";
+import ferritinaImage from "@/assets/ferritina.webp";
 
 export type Recommendation = "Vitamina D" | "Ferritina" | "Evaluación clínica general";
 
@@ -221,6 +223,21 @@ export function HealthDecisionWizard() {
                 )}
               </p>
             </div>
+
+            {/* Product Image */}
+            {(result === "Vitamina D" || result === "Ferritina") && (
+              <div className="flex justify-center">
+                <div className="relative max-w-md lg:max-w-lg xl:max-w-xl">
+                  <img
+                    src={result === "Vitamina D" ? vitaminaDImage : ferritinaImage}
+                    alt={`Prueba de ${result} - Kit de análisis`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full rounded-2xl border-2 border-primary/20 shadow-[var(--shadow-elegant)] transform hover:scale-105 transition-all duration-300"
+                  />
+                </div>
+              </div>
+            )}
             
             <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-2xl mx-auto">
               <Button 
@@ -231,14 +248,22 @@ export function HealthDecisionWizard() {
               >
                 Nueva evaluación
               </Button>
-              <Button 
-                variant="outline" 
-                onClick={reset} 
-                size="lg" 
-                className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl border-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-              >
-                Ver detalles
-              </Button>
+              {(result === "Vitamina D" || result === "Ferritina") && (
+                <Button 
+                  asChild
+                  variant="outline" 
+                  size="lg" 
+                  className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl border-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                >
+                  <a 
+                    href={result === "Vitamina D" ? "https://previtacare.com/productos/vitamina-d" : "https://previta-test.pages.dev/productos/hierro"} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    Solicitar prueba
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         )}

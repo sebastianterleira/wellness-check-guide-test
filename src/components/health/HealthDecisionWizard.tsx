@@ -239,31 +239,15 @@ export function HealthDecisionWizard() {
               </div>
             )}
             
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-2xl mx-auto">
+            <div className="flex justify-center max-w-2xl mx-auto">
               <Button 
                 variant="hero" 
                 onClick={reset} 
                 size="lg" 
-                className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                className="h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 px-12 lg:px-16"
               >
                 Nueva evaluación
               </Button>
-              {(result === "Vitamina D" || result === "Ferritina") && (
-                <Button 
-                  asChild
-                  variant="outline" 
-                  size="lg" 
-                  className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl border-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                >
-                  <a 
-                    href={result === "Vitamina D" ? "https://previtacare.com/productos/vitamina-d" : "https://previta-test.pages.dev/productos/hierro"} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    Solicitar prueba
-                  </a>
-                </Button>
-              )}
             </div>
           </div>
         )}

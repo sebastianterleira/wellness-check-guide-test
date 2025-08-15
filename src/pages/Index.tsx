@@ -75,36 +75,38 @@ const Index = () => {
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
 
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <a href="/" className="flex items-center">
-            <img 
-              src={logoImage} 
-              alt="Previta Care - Pruebas médicas" 
-              className="h-12 w-auto"
-            />
-          </a>
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#evaluacion" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Evaluación
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4">
+        <div className="bg-gradient-to-r from-blue-500/90 to-blue-600/90 backdrop-blur-lg rounded-full shadow-lg border border-white/20">
+          <div className="flex h-14 items-center justify-between px-6">
+            <a href="/" className="flex items-center">
+              <img 
+                src={logoImage} 
+                alt="Previta Care - Pruebas médicas" 
+                className="h-8 w-auto"
+              />
             </a>
-            <a href="#vitamina-d" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Pruebas
-            </a>
-            <a href="#ferritina" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Resultados
-            </a>
-            <a href="#contacto" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Contacto
-            </a>
-          </nav>
-          <Button asChild variant="hero" size="sm" className="hidden md:flex rounded-full px-6">
-            <a href="#evaluacion">Comenzar</a>
-          </Button>
+            <nav className="hidden md:flex items-center gap-8">
+              <a href="#evaluacion" className="text-sm font-medium text-white/90 hover:text-white transition-colors">
+                Evaluación
+              </a>
+              <a href="#vitamina-d" className="text-sm font-medium text-white/90 hover:text-white transition-colors">
+                Pruebas
+              </a>
+              <a href="#ferritina" className="text-sm font-medium text-white/90 hover:text-white transition-colors">
+                Resultados
+              </a>
+              <a href="#contacto" className="text-sm font-medium text-white/90 hover:text-white transition-colors">
+                Contacto
+              </a>
+            </nav>
+            <Button asChild size="sm" className="hidden md:flex bg-gray-900 hover:bg-gray-800 text-white rounded-full px-6 border-0">
+              <a href="#evaluacion">Comenzar</a>
+            </Button>
+          </div>
         </div>
       </header>
 
-      <main>
+      <main className="pt-20">
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--accent))] to-background" />

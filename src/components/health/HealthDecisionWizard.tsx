@@ -80,6 +80,7 @@ export function HealthDecisionWizard() {
   const [currentId, setCurrentId] = useState<Exclude<NodeId, "RESULT">>("Q1");
   const [answered, setAnswered] = useState<{ id: string; value: "Sí" | "No" }[]>([]);
   const [result, setResult] = useState<Recommendation | null>(null);
+  const [savedResult, setSavedResult] = useState<Recommendation | null>(null);
 
   const progress = useMemo(() => {
     const count = result ? answered.length : answered.length + 1;
@@ -94,28 +95,45 @@ export function HealthDecisionWizard() {
     const next = value === "Sí" ? step.yes : step.no;
     if (!next) return;
 
-    if (next.startsWith("RESULT:")) {
+    // Si es un resultado y no hemos guardado uno aún, guardarlo
+    if (next.startsWith("RESULT:") && !savedResult) {
       const rec = next.split(":")[1] as Recommendation;
-      setResult(rec);
+      setSavedResult(rec);
+    }
+
+    // Si llegamos a Q7, mostrar el resultado
+    if (currentId === "Q7") {
+      const finalResult = savedResult || (next.startsWith("RESULT:") ? next.split(":")[1] as Recommendation : "Evaluación clínica general");
+      setResult(finalResult);
       toast({
         title: "Resultado disponible",
         description:
-          rec === "Vitamina D"
+          finalResult === "Vitamina D"
             ? "Recomendación: medir niveles de Vitamina D"
-            : rec === "Ferritina"
+            : finalResult === "Ferritina"
             ? "Recomendación: evaluar Ferritina (hierro)"
             : "Sugerencia: realizar evaluación clínica general",
       });
       return;
     }
 
-    setCurrentId(next as Exclude<NodeId, "RESULT">);
+    // Continuar a la siguiente pregunta
+    if (next.startsWith("RESULT:")) {
+      // Si es un resultado pero no estamos en Q7, continuar con la siguiente pregunta secuencial
+      const nextQuestionNumber = parseInt(currentId.substring(1)) + 1;
+      if (nextQuestionNumber <= 7) {
+        setCurrentId(`Q${nextQuestionNumber}` as Exclude<NodeId, "RESULT">);
+      }
+    } else {
+      setCurrentId(next as Exclude<NodeId, "RESULT">);
+    }
   };
 
   const reset = () => {
     setCurrentId("Q1");
     setAnswered([]);
     setResult(null);
+    setSavedResult(null);
   };
 
   const step = STEPS[currentId];

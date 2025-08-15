@@ -77,18 +77,30 @@ const Index = () => {
 
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
-          <a href="#" className="flex items-center">
+          <a href="/" className="flex items-center">
             <img 
               src={logoImage} 
               alt="Previta Care - Pruebas médicas" 
               className="h-12 w-auto"
             />
           </a>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#evaluacion" className="hover:text-foreground">Evaluación</a>
-            <a href="#vitamina-d" className="hover:text-foreground">Vitamina D</a>
-            <a href="#ferritina" className="hover:text-foreground">Ferritina</a>
+          <nav className="hidden md:flex items-center gap-8">
+            <a href="#evaluacion" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Evaluación
+            </a>
+            <a href="#vitamina-d" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Pruebas
+            </a>
+            <a href="#ferritina" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Resultados
+            </a>
+            <a href="#contacto" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Contacto
+            </a>
           </nav>
+          <Button asChild variant="hero" size="sm" className="hidden md:flex rounded-full px-6">
+            <a href="#evaluacion">Comenzar</a>
+          </Button>
         </div>
       </header>
 

@@ -121,13 +121,15 @@ export function HealthDecisionWizard() {
   const step = STEPS[currentId];
 
   return (
-    <Card className="relative overflow-hidden">
+    <Card className="relative overflow-hidden border-2 shadow-[var(--shadow-elegant)] bg-gradient-to-br from-background to-accent/20">
       <div className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]">
         <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-gradient-to-br from-[hsl(var(--primary)/0.25)] to-[hsl(var(--primary-glow)/0.25)] blur-3xl animate-float" />
       </div>
-      <CardHeader>
-        <CardTitle>Evaluación rápida</CardTitle>
-        <CardDescription>
+      <CardHeader className="text-center sm:text-left">
+        <CardTitle className="text-2xl sm:text-3xl bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+          Evaluación rápida
+        </CardTitle>
+        <CardDescription className="text-base">
           Responde con Sí o No. No reemplaza el criterio médico.
         </CardDescription>
       </CardHeader>
@@ -142,16 +144,18 @@ export function HealthDecisionWizard() {
 
         {!result && (
           <div className="space-y-6">
-            <p className="text-lg font-medium leading-relaxed">{step.question}</p>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="hero" size="lg" onClick={() => handleAnswer("Sí")} aria-label="Responder Sí">
+            <div className="bg-accent/30 rounded-lg p-4 border border-accent">
+              <p className="text-lg font-medium leading-relaxed text-center sm:text-left">{step.question}</p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="hero" size="lg" onClick={() => handleAnswer("Sí")} aria-label="Responder Sí" className="flex-1 sm:flex-none">
                 Sí
               </Button>
-              <Button variant="outline" size="lg" onClick={() => handleAnswer("No")} aria-label="Responder No">
+              <Button variant="outline" size="lg" onClick={() => handleAnswer("No")} aria-label="Responder No" className="flex-1 sm:flex-none">
                 No
               </Button>
               {answered.length > 0 && (
-                <Button variant="ghost" onClick={reset} aria-label="Reiniciar cuestionario">
+                <Button variant="ghost" onClick={reset} aria-label="Reiniciar cuestionario" className="sm:ml-auto">
                   Reiniciar
                 </Button>
               )}
@@ -160,39 +164,41 @@ export function HealthDecisionWizard() {
         )}
 
         {result && (
-          <div className="space-y-4">
-            <div role="status" aria-live="polite" className="space-y-2">
-              <h3 className="text-2xl font-semibold">Recomendación</h3>
-              <p className="text-muted-foreground">
+          <div className="space-y-6">
+            <div role="status" aria-live="polite" className="bg-gradient-to-r from-[hsl(var(--primary)/0.1)] to-[hsl(var(--primary-glow)/0.1)] rounded-lg p-6 border border-primary/20 text-center">
+              <h3 className="text-2xl sm:text-3xl font-semibold mb-3 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+                Recomendación
+              </h3>
+              <p className="text-lg text-muted-foreground">
                 {result === "Vitamina D" && (
                   <>
-                    Se sugiere priorizar la medición de <strong>Vitamina D</strong>.
+                    Se sugiere priorizar la medición de <strong className="text-foreground">Vitamina D</strong>.
                   </>
                 )}
                 {result === "Ferritina" && (
                   <>
-                    Se sugiere priorizar la medición de <strong>Ferritina</strong> (estado de hierro).
+                    Se sugiere priorizar la medición de <strong className="text-foreground">Ferritina</strong> (estado de hierro).
                   </>
                 )}
                 {result === "Evaluación clínica general" && (
                   <>
-                    Considera una <strong>evaluación clínica general</strong> con tu profesional de salud.
+                    Considera una <strong className="text-foreground">evaluación clínica general</strong> con tu profesional de salud.
                   </>
                 )}
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               {result === "Vitamina D" && (
-                <Button asChild variant="hero">
+                <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
                   <a href="#vitamina-d">Ver prueba de Vitamina D</a>
                 </Button>
               )}
               {result === "Ferritina" && (
-                <Button asChild variant="hero">
+                <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
                   <a href="#ferritina">Ver prueba de Ferritina</a>
                 </Button>
               )}
-              <Button variant="ghost" onClick={reset}>Realizar nuevamente</Button>
+              <Button variant="outline" onClick={reset} size="lg" className="w-full sm:w-auto">Realizar nuevamente</Button>
             </div>
           </div>
         )}

@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import hero from "@/assets/hero-medical.jpg";
 import vitaminaDImage from "@/assets/vitamina-d.webp";
 import ferritinaImage from "@/assets/ferritina.webp";
+import logoImage from "@/assets/logo-previta.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { HealthDecisionWizard } from "@/components/health/HealthDecisionWizard";
@@ -74,11 +75,14 @@ const Index = () => {
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
 
-      <header className="border-b">
+      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
-          <a href="#" className="flex items-center gap-2">
-            <div className="h-6 w-6 rounded-md bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))]" />
-            <span className="font-semibold">Salud y Bienestar</span>
+          <a href="#" className="flex items-center">
+            <img 
+              src={logoImage} 
+              alt="Previta Care - Pruebas médicas" 
+              className="h-8 w-auto"
+            />
           </a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#evaluacion" className="hover:text-foreground">Evaluación</a>
@@ -102,11 +106,11 @@ const Index = () => {
               <p className="text-lg text-muted-foreground">
                 Responde 7 preguntas sí/no y obtén una recomendación rápida y orientativa basada en síntomas comunes.
               </p>
-              <div className="flex gap-3">
-                <Button asChild variant="hero" size="lg">
+              <div className="flex flex-col sm:flex-row gap-3 items-center sm:items-start">
+                <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
                   <a href="#evaluacion">Comenzar evaluación</a>
                 </Button>
-                <Button asChild variant="outline" size="lg">
+                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                   <a href="#vitamina-d">Conocer pruebas</a>
                 </Button>
               </div>
@@ -145,7 +149,7 @@ const Index = () => {
                 <li>Ideal para chequeos preventivos</li>
               </ul>
               <div className="pt-2">
-                <Button asChild variant="hero">
+                <Button asChild variant="hero" className="w-full md:w-auto">
                   <a href="https://previtacare.com/productos/vitamina-d" target="_blank" rel="noopener noreferrer">
                     Solicitar prueba
                   </a>
@@ -186,7 +190,7 @@ const Index = () => {
                 <li>Orientación para seguimiento médico</li>
               </ul>
               <div className="pt-2">
-                <Button asChild variant="hero">
+                <Button asChild variant="hero" className="w-full md:w-auto">
                   <a href="https://previta-test.pages.dev/productos/hierro" target="_blank" rel="noopener noreferrer">
                     Solicitar prueba
                   </a>

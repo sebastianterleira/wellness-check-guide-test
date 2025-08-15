@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import hero from "@/assets/hero-medical.jpg";
+import vitaminaDImage from "@/assets/vitamina-d.webp";
+import ferritinaImage from "@/assets/ferritina.webp";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { HealthDecisionWizard } from "@/components/health/HealthDecisionWizard";
@@ -143,32 +145,36 @@ const Index = () => {
                 <li>Ideal para chequeos preventivos</li>
               </ul>
               <div className="pt-2">
-                <Button variant="hero">Solicitar prueba</Button>
+                <Button asChild variant="hero">
+                  <a href="https://previtacare.com/productos/vitamina-d" target="_blank" rel="noopener noreferrer">
+                    Solicitar prueba
+                  </a>
+                </Button>
               </div>
             </div>
-            <Card className="shadow-[var(--shadow-elegant)]">
-              <CardHeader>
-                <CardTitle>¿Para quién?</CardTitle>
-                <CardDescription>Personas con poca exposición solar, dolor o debilidad muscular.</CardDescription>
-              </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                La medición de 25(OH)D ayuda a conocer el estado de Vitamina D y orientar acciones de salud.
-              </CardContent>
-            </Card>
+            <div className="relative">
+              <img
+                src={vitaminaDImage}
+                alt="Prueba de Vitamina D - Kit de análisis"
+                loading="lazy"
+                decoding="async"
+                className="mx-auto w-full max-w-md rounded-xl border shadow-[var(--shadow-elegant)]"
+              />
+            </div>
           </div>
         </section>
 
         <section id="ferritina" className="py-16 md:py-24">
           <div className="container grid items-center gap-8 md:grid-cols-2">
-            <Card className="order-2 shadow-[var(--shadow-elegant)] md:order-1">
-              <CardHeader>
-                <CardTitle>¿Para quién?</CardTitle>
-                <CardDescription>Síntomas compatibles con déficit de hierro o pérdidas sanguíneas.</CardDescription>
-              </CardHeader>
-              <CardContent className="text-sm text-muted-foreground">
-                La ferritina refleja las reservas de hierro y es útil para evaluar anemia ferropénica u otras condiciones.
-              </CardContent>
-            </Card>
+            <div className="relative order-2 md:order-1">
+              <img
+                src={ferritinaImage}
+                alt="Prueba de Ferritina - Test de deficiencia de hierro"
+                loading="lazy"
+                decoding="async"
+                className="mx-auto w-full max-w-md rounded-xl border shadow-[var(--shadow-elegant)]"
+              />
+            </div>
             <div className="order-1 space-y-4 md:order-2">
               <h2 className="text-3xl font-semibold">Prueba de Ferritina</h2>
               <p className="text-muted-foreground">
@@ -180,7 +186,11 @@ const Index = () => {
                 <li>Orientación para seguimiento médico</li>
               </ul>
               <div className="pt-2">
-                <Button variant="hero">Solicitar prueba</Button>
+                <Button asChild variant="hero">
+                  <a href="https://previta-test.pages.dev/productos/hierro" target="_blank" rel="noopener noreferrer">
+                    Solicitar prueba
+                  </a>
+                </Button>
               </div>
             </div>
           </div>

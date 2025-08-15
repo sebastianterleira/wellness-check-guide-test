@@ -139,84 +139,106 @@ export function HealthDecisionWizard() {
   const step = STEPS[currentId];
 
   return (
-    <Card className="relative overflow-hidden border-2 shadow-[var(--shadow-elegant)] bg-gradient-to-br from-background to-accent/20">
+    <Card className="relative overflow-hidden border-2 shadow-[var(--shadow-elegant)] bg-gradient-to-br from-background to-accent/20 max-w-none">
       <div className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]">
         <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-gradient-to-br from-[hsl(var(--primary)/0.25)] to-[hsl(var(--primary-glow)/0.25)] blur-3xl animate-float" />
       </div>
-      <CardHeader className="text-center sm:text-left">
-        <CardTitle className="text-2xl sm:text-3xl bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
-          Evaluación rápida
-        </CardTitle>
-        <CardDescription className="text-base">
-          Responde con Sí o No. No reemplaza el criterio médico.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <span>Progreso</span>
-            <span>{progress}%</span>
+      
+      <CardContent className="p-8 lg:p-12 space-y-8 lg:space-y-12">
+        <div className="space-y-4">
+          <div className="flex items-center justify-between text-lg lg:text-xl text-muted-foreground">
+            <span className="font-medium">Pregunta {currentId.slice(1)} de 7</span>
+            <span className="font-bold">{progress}%</span>
           </div>
-          <Progress value={progress} className="h-2" />
+          <Progress value={progress} className="h-3 lg:h-4" />
         </div>
 
         {!result && (
-          <div className="space-y-6">
-            <div className="bg-accent/30 rounded-lg p-4 border border-accent">
-              <p className="text-lg font-medium leading-relaxed text-center sm:text-left">{step.question}</p>
+          <div className="space-y-8 lg:space-y-12">
+            <div className="bg-gradient-to-r from-accent/40 to-accent/20 rounded-2xl p-8 lg:p-12 border border-accent/50 text-center">
+              <p className="text-2xl lg:text-4xl xl:text-5xl font-semibold leading-relaxed text-foreground">
+                {step.question}
+              </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button variant="hero" size="lg" onClick={() => handleAnswer("Sí")} aria-label="Responder Sí" className="flex-1 sm:flex-none h-16 sm:h-11">
+            
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-2xl mx-auto">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                onClick={() => handleAnswer("Sí")} 
+                aria-label="Responder Sí" 
+                className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              >
                 Sí
               </Button>
-              <Button variant="outline" size="lg" onClick={() => handleAnswer("No")} aria-label="Responder No" className="flex-1 sm:flex-none h-16 sm:h-11">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                onClick={() => handleAnswer("No")} 
+                aria-label="Responder No" 
+                className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl border-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              >
                 No
               </Button>
-              {answered.length > 0 && (
-                <Button variant="ghost" onClick={reset} aria-label="Reiniciar cuestionario" className="sm:ml-auto">
-                  Reiniciar
-                </Button>
-              )}
             </div>
+
+            {answered.length > 0 && (
+              <div className="text-center">
+                <Button 
+                  variant="ghost" 
+                  onClick={reset} 
+                  aria-label="Reiniciar cuestionario" 
+                  className="text-lg lg:text-xl px-8 py-4 rounded-xl hover:bg-accent/20 transition-colors"
+                >
+                  Reiniciar evaluación
+                </Button>
+              </div>
+            )}
           </div>
         )}
 
         {result && (
-          <div className="space-y-6">
-            <div role="status" aria-live="polite" className="bg-gradient-to-r from-[hsl(var(--primary)/0.1)] to-[hsl(var(--primary-glow)/0.1)] rounded-lg p-6 border border-primary/20 text-center">
-              <h3 className="text-2xl sm:text-3xl font-semibold mb-3 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
-                Recomendación
+          <div className="space-y-8 lg:space-y-12 text-center">
+            <div role="status" aria-live="polite" className="bg-gradient-to-r from-[hsl(var(--primary)/0.15)] to-[hsl(var(--primary-glow)/0.15)] rounded-2xl p-8 lg:p-12 border border-primary/30">
+              <h3 className="text-3xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+                Tu recomendación
               </h3>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-xl lg:text-3xl xl:text-4xl text-muted-foreground leading-relaxed">
                 {result === "Vitamina D" && (
                   <>
-                    Se sugiere priorizar la medición de <strong className="text-foreground">Vitamina D</strong>.
+                    Se sugiere priorizar la medición de <strong className="text-foreground bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">Vitamina D</strong>
                   </>
                 )}
                 {result === "Ferritina" && (
                   <>
-                    Se sugiere priorizar la medición de <strong className="text-foreground">Ferritina</strong> (estado de hierro).
+                    Se sugiere priorizar la medición de <strong className="text-foreground bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">Ferritina</strong> (estado de hierro)
                   </>
                 )}
                 {result === "Evaluación clínica general" && (
                   <>
-                    Considera una <strong className="text-foreground">evaluación clínica general</strong> con tu profesional de salud.
+                    Considera una <strong className="text-foreground bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">evaluación clínica general</strong> con tu profesional de salud
                   </>
                 )}
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              {result === "Vitamina D" && (
-                <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
-                  <a href="#vitamina-d">Ver prueba de Vitamina D</a>
-                </Button>
-              )}
-              {result === "Ferritina" && (
-                <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
-                  <a href="#ferritina">Ver prueba de Ferritina</a>
-                </Button>
-              )}
-              <Button variant="outline" onClick={reset} size="lg" className="w-full sm:w-auto">Realizar nuevamente</Button>
+            
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-2xl mx-auto">
+              <Button 
+                variant="hero" 
+                onClick={reset} 
+                size="lg" 
+                className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              >
+                Nueva evaluación
+              </Button>
+              <Button 
+                variant="outline" 
+                onClick={reset} 
+                size="lg" 
+                className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl border-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+              >
+                Ver detalles
+              </Button>
             </div>
           </div>
         )}

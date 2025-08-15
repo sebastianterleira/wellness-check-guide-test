@@ -75,154 +75,37 @@ const Index = () => {
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
 
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <a href="/" className="flex items-center">
-            <img 
-              src={logoImage} 
-              alt="Previta Care - Pruebas médicas" 
-              className="h-12 w-auto"
-            />
-          </a>
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#evaluacion" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Evaluación
-            </a>
-            <a href="#vitamina-d" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Pruebas
-            </a>
-            <a href="#ferritina" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Resultados
-            </a>
-            <a href="#contacto" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-              Contacto
-            </a>
-          </nav>
-          <Button asChild variant="hero" size="sm" className="hidden md:flex rounded-full px-6">
-            <a href="#evaluacion">Comenzar</a>
-          </Button>
+      <main className="min-h-screen relative overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary)/0.05)] via-background to-[hsl(var(--accent)/0.1)]" />
+          <div className="absolute left-1/2 top-1/4 -z-10 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-[hsl(var(--primary)/0.15)] to-[hsl(var(--primary-glow)/0.15)] blur-3xl" />
         </div>
-      </header>
-
-      <main>
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--accent))] to-background" />
-            <div className="absolute left-1/2 top-0 -z-10 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-[hsl(var(--primary)/0.18)] to-[hsl(var(--primary-glow)/0.18)] blur-3xl" />
-          </div>
-          <div className="container grid gap-10 py-16 md:grid-cols-2 md:py-24 lg:py-28">
-            <div className="flex flex-col justify-center gap-6">
-              <h1 className="text-4xl font-bold tracking-tight md:text-5xl text-center md:text-left">
-                Chequeo de Bienestar: ¿Vitamina D o Ferritina?
-              </h1>
-              <p className="text-lg text-muted-foreground text-center md:text-left">
-                Responde 7 preguntas sí/no y obtén una recomendación rápida y orientativa basada en síntomas comunes.
-              </p>
-              <div className="flex flex-col gap-3 items-center md:flex-row md:items-start">
-                <Button asChild variant="hero" size="lg" className="w-full md:w-auto">
-                  <a href="#evaluacion">Comenzar evaluación</a>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="w-full md:w-auto">
-                  <a href="#vitamina-d">Conocer pruebas</a>
-                </Button>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                Nota: Esta herramienta no reemplaza una consulta médica profesional.
-              </p>
-            </div>
-            <div className="relative">
-              <img
-                src={hero}
-                alt="Ilustración médica moderna para bienestar, vitamina D y ferritina"
-                loading="eager"
-                decoding="async"
-                className="mx-auto w-full max-w-xl rounded-xl border shadow-[var(--shadow-elegant)]"
+        
+        <div className="container max-w-6xl mx-auto px-4 py-8 lg:py-16">
+          <div className="text-center mb-8 lg:mb-16">
+            <div className="mb-6">
+              <img 
+                src={logoImage} 
+                alt="Previta Care - Pruebas médicas" 
+                className="h-16 lg:h-20 w-auto mx-auto"
               />
             </div>
+            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+              Evaluación de Bienestar
+            </h1>
+            <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-4">
+              Responde 7 preguntas sí/no y obtén una recomendación personalizada
+            </p>
+            <p className="text-sm lg:text-base text-muted-foreground/80">
+              Esta herramienta no reemplaza una consulta médica profesional
+            </p>
           </div>
-        </section>
 
-        <section id="evaluacion" className="container py-16 md:py-24">
-          <div className="mx-auto max-w-3xl">
+          <div className="max-w-4xl mx-auto">
             <HealthDecisionWizard />
           </div>
-        </section>
-
-        <section id="vitamina-d" className="bg-accent/40 py-16 md:py-24">
-          <div className="container grid items-center gap-8 md:grid-cols-2">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-semibold">Prueba de Vitamina D</h2>
-              <p className="text-muted-foreground">
-                Evalúa tus niveles de Vitamina D, fundamentales para la salud ósea, muscular e inmunológica. Especialmente útil si pasas poco tiempo al sol o tienes dolor muscular.
-              </p>
-              <ul className="list-disc pl-5 text-muted-foreground">
-                <li>Resultados confiables de laboratorio</li>
-                <li>Recomendaciones orientativas</li>
-                <li>Ideal para chequeos preventivos</li>
-              </ul>
-              <div className="pt-2">
-                <Button asChild variant="hero" className="w-full md:w-auto">
-                  <a href="https://previtacare.com/productos/vitamina-d" target="_blank" rel="noopener noreferrer">
-                    Solicitar prueba
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src={vitaminaDImage}
-                alt="Prueba de Vitamina D - Kit de análisis"
-                loading="lazy"
-                decoding="async"
-                className="mx-auto w-full max-w-md rounded-xl border shadow-[var(--shadow-elegant)]"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section id="ferritina" className="py-16 md:py-24">
-          <div className="container grid items-center gap-8 md:grid-cols-2">
-            <div className="relative order-2 md:order-1">
-              <img
-                src={ferritinaImage}
-                alt="Prueba de Ferritina - Test de deficiencia de hierro"
-                loading="lazy"
-                decoding="async"
-                className="mx-auto w-full max-w-md rounded-xl border shadow-[var(--shadow-elegant)]"
-              />
-            </div>
-            <div className="order-1 space-y-4 md:order-2">
-              <h2 className="text-3xl font-semibold">Prueba de Ferritina</h2>
-              <p className="text-muted-foreground">
-                Ideal si presentas fatiga persistente, palidez, mareos o menstruaciones abundantes. Permite evaluar tus reservas de hierro.
-              </p>
-              <ul className="list-disc pl-5 text-muted-foreground">
-                <li>Método estandarizado de laboratorio</li>
-                <li>Complemento para la evaluación de anemia</li>
-                <li>Orientación para seguimiento médico</li>
-              </ul>
-              <div className="pt-2">
-                <Button asChild variant="hero" className="w-full md:w-auto">
-                  <a href="https://previta-test.pages.dev/productos/hierro" target="_blank" rel="noopener noreferrer">
-                    Solicitar prueba
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="border-t">
-        <div className="container flex flex-col items-center justify-between gap-4 py-10 md:flex-row">
-          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Salud y Bienestar</p>
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#evaluacion" className="hover:text-foreground">Evaluación</a>
-            <a href="#vitamina-d" className="hover:text-foreground">Vitamina D</a>
-            <a href="#ferritina" className="hover:text-foreground">Ferritina</a>
-          </nav>
         </div>
-      </footer>
+      </main>
     </>
   );
 };

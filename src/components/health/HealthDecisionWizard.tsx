@@ -148,10 +148,10 @@ export function HealthDecisionWizard() {
               <p className="text-lg font-medium leading-relaxed text-center sm:text-left">{step.question}</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button variant="hero" size="lg" onClick={() => handleAnswer("Sí")} aria-label="Responder Sí" className="flex-1 sm:flex-none">
+              <Button variant="hero" size="lg" onClick={() => handleAnswer("Sí")} aria-label="Responder Sí" className="flex-1 sm:flex-none h-16 sm:h-11">
                 Sí
               </Button>
-              <Button variant="outline" size="lg" onClick={() => handleAnswer("No")} aria-label="Responder No" className="flex-1 sm:flex-none">
+              <Button variant="outline" size="lg" onClick={() => handleAnswer("No")} aria-label="Responder No" className="flex-1 sm:flex-none h-16 sm:h-11">
                 No
               </Button>
               {answered.length > 0 && (

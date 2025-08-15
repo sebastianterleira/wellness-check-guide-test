@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import hero from "@/assets/hero-medical.jpg";
+import hero from "@/assets/hero-medical-new.jpg";
 import vitaminaDImage from "@/assets/vitamina-d.webp";
 import ferritinaImage from "@/assets/ferritina.webp";
 import logoImage from "@/assets/logo-previta.png";
@@ -81,7 +81,7 @@ const Index = () => {
             <img 
               src={logoImage} 
               alt="Previta Care - Pruebas médicas" 
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
           </a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
@@ -100,17 +100,17 @@ const Index = () => {
           </div>
           <div className="container grid gap-10 py-16 md:grid-cols-2 md:py-24 lg:py-28">
             <div className="flex flex-col justify-center gap-6">
-              <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+              <h1 className="text-4xl font-bold tracking-tight md:text-5xl text-center md:text-left">
                 Chequeo de Bienestar: ¿Vitamina D o Ferritina?
               </h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-muted-foreground text-center md:text-left">
                 Responde 7 preguntas sí/no y obtén una recomendación rápida y orientativa basada en síntomas comunes.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 items-center sm:items-start">
-                <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
+              <div className="flex flex-col gap-3 items-center md:flex-row md:items-start">
+                <Button asChild variant="hero" size="lg" className="w-full md:w-auto">
                   <a href="#evaluacion">Comenzar evaluación</a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button asChild variant="outline" size="lg" className="w-full md:w-auto">
                   <a href="#vitamina-d">Conocer pruebas</a>
                 </Button>
               </div>

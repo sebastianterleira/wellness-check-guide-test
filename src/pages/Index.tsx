@@ -75,7 +75,7 @@ const Index = () => {
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
 
-      <main className="min-h-screen relative overflow-hidden">
+      <main className="w-[1080px] h-[1920px] mx-auto overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary)/0.05)] via-background to-[hsl(var(--accent)/0.1)]" />
           <div className="absolute left-1/2 top-1/4 -z-10 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-[hsl(var(--primary)/0.15)] to-[hsl(var(--primary-glow)/0.15)] blur-3xl" />
@@ -90,13 +90,13 @@ const Index = () => {
                 className="h-16 lg:h-20 w-auto mx-auto"
               />
             </div>
-            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
-              Evaluación de Bienestar
+            <h1 className="text-[5vh] lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+              Radar de Bienestar
             </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-4">
-              Responde 7 preguntas sí/no y obtén una recomendación personalizada
+            <p className="text-[2.5vh] lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-4">
+              Tomate un minuto para saber si necesitas hacerte una prueba
             </p>
-            <p className="text-sm lg:text-base text-muted-foreground/80">
+            <p className="text-sm lg:text-xl text-muted-foreground/80">
               Esta herramienta no reemplaza una consulta médica profesional
             </p>
           </div>

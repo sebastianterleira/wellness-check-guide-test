@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import hero from "@/assets/hero-medical-new.jpg";
 import vitaminaDImage from "@/assets/vitamina-d.webp";
 import ferritinaImage from "@/assets/ferritina.webp";
 import logoImage from "@/assets/logo-previta.png";
@@ -67,11 +66,9 @@ const Index = () => {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={hero} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={hero} />
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
 

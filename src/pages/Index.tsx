@@ -75,33 +75,35 @@ const Index = () => {
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
 
-      <main className="min-h-screen relative overflow-hidden">
+      <main className="min-h-screen relative overflow-hidden flex flex-col">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary)/0.05)] via-background to-[hsl(var(--accent)/0.1)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--primary)/0.05)] via-background to-[hsl(var(--accent)/0.1)]" />
           <div className="absolute left-1/2 top-1/4 -z-10 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-[hsl(var(--primary)/0.15)] to-[hsl(var(--primary-glow)/0.15)] blur-3xl" />
         </div>
         
-        <div className="container max-w-6xl mx-auto px-4 py-8 lg:py-16">
-          <div className="text-center mb-8 lg:mb-16">
-            <div className="mb-6">
+        <div className="flex-1 flex flex-col justify-center px-8 py-6">
+          {/* Compact Header for Totem */}
+          <div className="text-center mb-8 flex-shrink-0">
+            <div className="mb-4">
               <img 
                 src={logoImage} 
                 alt="Previta Care - Pruebas médicas" 
-                className="h-16 lg:h-20 w-auto mx-auto"
+                className="h-12 w-auto mx-auto"
               />
             </div>
-            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+            <h1 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
               Evaluación de Bienestar
             </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-4">
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-2">
               Responde 7 preguntas sí/no y obtén una recomendación personalizada
             </p>
-            <p className="text-sm lg:text-base text-muted-foreground/80">
+            <p className="text-sm text-muted-foreground/80">
               Esta herramienta no reemplaza una consulta médica profesional
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          {/* Health Decision Wizard - Takes remaining space */}
+          <div className="flex-1 flex items-center justify-center max-w-6xl mx-auto w-full">
             <HealthDecisionWizard />
           </div>
         </div>

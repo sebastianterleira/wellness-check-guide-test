@@ -102,5 +102,20 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* Totem optimizations */
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Prevent text selection on touch */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Enable touch manipulation for better responsiveness */
+    touch-action: manipulation;
   }
 }

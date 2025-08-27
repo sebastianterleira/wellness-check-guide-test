@@ -211,26 +211,26 @@ export function HealthDecisionWizard() {
 
             {/* Product Images */}
             {(result === "Vitamina D" || result === "Ferritina" || result === "Ambas pruebas") && (
-              <div className="flex justify-center gap-8">
+              <div className={`flex justify-center ${result === "Ambas pruebas" ? "gap-6" : ""}`}>
                 {(result === "Vitamina D" || result === "Ambas pruebas") && (
-                  <div className="relative max-w-md lg:max-w-lg xl:max-w-xl">
+                  <div className={`relative ${result === "Ambas pruebas" ? "w-80 h-80" : "max-w-md lg:max-w-lg"}`}>
                     <img
                       src={vitaminaDImage}
                       alt="Prueba de Vitamina D - Kit de análisis"
                       loading="lazy"
                       decoding="async"
-                      className="w-full rounded-2xl border-2 border-primary/20 shadow-[var(--shadow-elegant)] transform hover:scale-105 transition-all duration-300"
+                      className="w-full h-full object-contain rounded-2xl border-2 border-primary/20 shadow-[var(--shadow-elegant)] transform hover:scale-105 transition-all duration-300"
                     />
                   </div>
                 )}
                 {(result === "Ferritina" || result === "Ambas pruebas") && (
-                  <div className="relative max-w-md lg:max-w-lg xl:max-w-xl">
+                  <div className={`relative ${result === "Ambas pruebas" ? "w-80 h-80" : "max-w-md lg:max-w-lg"}`}>
                     <img
                       src={ferritinaImage}
                       alt="Prueba de Ferritina - Kit de análisis"
                       loading="lazy"
                       decoding="async"
-                      className="w-full rounded-2xl border-2 border-primary/20 shadow-[var(--shadow-elegant)] transform hover:scale-105 transition-all duration-300"
+                      className="w-full h-full object-contain rounded-2xl border-2 border-primary/20 shadow-[var(--shadow-elegant)] transform hover:scale-105 transition-all duration-300"
                     />
                   </div>
                 )}

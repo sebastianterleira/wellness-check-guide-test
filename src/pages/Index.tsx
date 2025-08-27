@@ -81,29 +81,29 @@ const Index = () => {
           <div className="absolute left-1/2 top-1/4 -z-10 h-96 w-[48rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-[hsl(var(--primary)/0.15)] to-[hsl(var(--primary-glow)/0.15)] blur-3xl" />
         </div>
         
-        <div className="flex-1 flex flex-col justify-center px-8 py-6">
+        <div className="flex-1 flex flex-col px-8 py-4 h-screen">
           {/* Compact Header for Totem */}
-          <div className="text-center mb-8 flex-shrink-0">
-            <div className="mb-4">
+          <div className="text-center mb-6 flex-shrink-0">
+            <div className="mb-3">
               <img 
                 src={logoImage} 
                 alt="Previta Care - Pruebas médicas" 
-                className="h-12 w-auto mx-auto"
+                className="h-16 w-auto mx-auto"
               />
             </div>
-            <h1 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold tracking-tight mb-3 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
               Evaluación de Bienestar
             </h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-2">
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-1">
               Responde 7 preguntas sí/no y obtén una recomendación personalizada
             </p>
-            <p className="text-sm text-muted-foreground/80">
+            <p className="text-xs text-muted-foreground/80">
               Esta herramienta no reemplaza una consulta médica profesional
             </p>
           </div>
 
           {/* Health Decision Wizard - Takes remaining space */}
-          <div className="flex-1 flex items-center justify-center max-w-6xl mx-auto w-full">
+          <div className="flex-1 flex items-start justify-center max-w-6xl mx-auto w-full overflow-hidden">
             <HealthDecisionWizard />
           </div>
         </div>

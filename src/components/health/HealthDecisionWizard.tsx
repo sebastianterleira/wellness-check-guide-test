@@ -141,35 +141,35 @@ export function HealthDecisionWizard() {
   const step = STEPS[currentId];
 
   return (
-    <Card className="relative overflow-hidden border-2 shadow-[var(--shadow-elegant)] bg-gradient-to-br from-background to-accent/20 w-full max-w-5xl mx-auto h-full">
+    <Card className="relative overflow-hidden border-2 shadow-[var(--shadow-elegant)] bg-gradient-to-br from-background to-accent/20 max-w-none">
       <div className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_30%,black,transparent)]">
         <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-gradient-to-br from-[hsl(var(--primary)/0.25)] to-[hsl(var(--primary-glow)/0.25)] blur-3xl animate-float" />
       </div>
       
-      <CardContent className="p-6 h-full flex flex-col justify-between">
-        <div className="space-y-3 flex-shrink-0">
-          <div className="flex items-center justify-between text-xl text-muted-foreground">
+      <CardContent className="p-8 lg:p-12 space-y-8 lg:space-y-12">
+        <div className="space-y-4">
+          <div className="flex items-center justify-between text-lg lg:text-xl text-muted-foreground">
             <span className="font-medium">Pregunta {currentId.slice(1)} de 7</span>
             <span className="font-bold">{progress}%</span>
           </div>
-          <Progress value={progress} className="h-3" />
+          <Progress value={progress} className="h-3 lg:h-4" />
         </div>
 
         {!result && (
-          <div className="flex-1 flex flex-col justify-center space-y-6">
-            <div className="bg-gradient-to-r from-accent/40 to-accent/20 rounded-3xl p-6 border border-accent/50 text-center flex items-center justify-center">
-              <p className="text-2xl font-semibold leading-relaxed text-foreground max-w-4xl">
+          <div className="space-y-8 lg:space-y-12">
+            <div className="bg-gradient-to-r from-accent/40 to-accent/20 rounded-2xl p-8 lg:p-12 border border-accent/50 text-center">
+              <p className="text-2xl lg:text-4xl xl:text-5xl font-semibold leading-relaxed text-foreground">
                 {step.question}
               </p>
             </div>
             
-            <div className="flex gap-6 max-w-4xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 max-w-2xl mx-auto">
               <Button 
                 variant="hero" 
                 size="lg" 
                 onClick={() => handleAnswer("Sí")} 
                 aria-label="Responder Sí" 
-                className="flex-1 h-24 text-3xl font-bold rounded-3xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 touch-manipulation"
+                className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
                 Sí
               </Button>
@@ -178,7 +178,7 @@ export function HealthDecisionWizard() {
                 size="lg" 
                 onClick={() => handleAnswer("No")} 
                 aria-label="Responder No" 
-                className="flex-1 h-24 text-3xl font-bold rounded-3xl border-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 touch-manipulation"
+                className="flex-1 h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl border-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
                 No
               </Button>
@@ -190,7 +190,7 @@ export function HealthDecisionWizard() {
                   variant="ghost" 
                   onClick={reset} 
                   aria-label="Reiniciar cuestionario" 
-                  className="text-xl px-8 py-4 rounded-2xl hover:bg-accent/20 transition-colors touch-manipulation"
+                  className="text-lg lg:text-xl px-8 py-4 rounded-xl hover:bg-accent/20 transition-colors"
                 >
                   Reiniciar evaluación
                 </Button>
@@ -200,12 +200,12 @@ export function HealthDecisionWizard() {
         )}
 
         {result && (
-          <div className="flex-1 flex flex-col justify-between space-y-4 text-center">
-            <div role="status" aria-live="polite" className="bg-gradient-to-r from-[hsl(var(--primary)/0.15)] to-[hsl(var(--primary-glow)/0.15)] rounded-3xl p-6 border border-primary/30">
-              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+          <div className="space-y-8 lg:space-y-12 text-center">
+            <div role="status" aria-live="polite" className="bg-gradient-to-r from-[hsl(var(--primary)/0.15)] to-[hsl(var(--primary-glow)/0.15)] rounded-2xl p-8 lg:p-12 border border-primary/30">
+              <h3 className="text-3xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8 bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
                 Tu recomendación
               </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-xl lg:text-3xl xl:text-4xl text-muted-foreground leading-relaxed">
                 {result === "Vitamina D" && (
                   <>
                     Se sugiere priorizar la medición de <strong className="text-foreground bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">Vitamina D</strong>
@@ -226,25 +226,25 @@ export function HealthDecisionWizard() {
 
             {/* Product Image */}
             {(result === "Vitamina D" || result === "Ferritina") && (
-              <div className="flex justify-center flex-1">
-                <div className="relative max-w-xs">
+              <div className="flex justify-center">
+                <div className="relative max-w-md lg:max-w-lg xl:max-w-xl">
                   <img
                     src={result === "Vitamina D" ? vitaminaDImage : ferritinaImage}
                     alt={`Prueba de ${result} - Kit de análisis`}
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-auto max-h-60 object-contain rounded-3xl border-2 border-primary/20 shadow-[var(--shadow-elegant)] transform hover:scale-105 transition-all duration-300"
+                    className="w-full rounded-2xl border-2 border-primary/20 shadow-[var(--shadow-elegant)] transform hover:scale-105 transition-all duration-300"
                   />
                 </div>
               </div>
             )}
             
-            <div className="flex justify-center flex-shrink-0">
+            <div className="flex justify-center max-w-2xl mx-auto">
               <Button 
                 variant="hero" 
                 onClick={reset} 
                 size="lg" 
-                className="h-20 text-2xl font-bold rounded-3xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 px-12 touch-manipulation"
+                className="h-20 lg:h-24 text-2xl lg:text-3xl font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 px-12 lg:px-16"
               >
                 Nueva evaluación
               </Button>

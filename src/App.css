@@ -1,14 +1,8 @@
 #root {
-  /* Totem vertical layout optimizations */
-  width: 100vw;
-  min-height: 100vh;
-  margin: 0;
-  padding: 1rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  /* Ensure full viewport usage on totem */
-  max-width: none;
 }
 
 .logo {

@@ -11,36 +11,44 @@ export type Recommendation = "Vitamina D" | "Ferritina" | "Ambas pruebas" | "Con
 type Question = {
   id: string;
   text: string;
+  type: string;
 };
 
 const QUESTIONS: Question[] = [
   {
     id: "Q1",
-    text: "¿Te sientes con cansancio o fatiga la mayor parte del tiempo?"
+    text: "¿Te sientes con cansancio o fatiga la mayor parte del tiempo?",
+    type: "Pregunta Ferritina"
   },
   {
     id: "Q2", 
-    text: "¿Presentas piel pálida o palidez en mucosas (labios, encías, párpados)?"
+    text: "¿Presentas piel pálida o palidez en mucosas (labios, encías, párpados)?",
+    type: "Pregunta Ferritina"
   },
   {
     id: "Q3",
-    text: "¿Se te cae el cabello con mayor frecuencia de lo normal?"
+    text: "¿Se te cae el cabello con mayor frecuencia de lo normal?",
+    type: "Pregunta Ferritina"
   },
   {
     id: "Q4",
-    text: "¿Has tenido debilidad muscular o dolor en los huesos/articulaciones?"
+    text: "¿Has tenido debilidad muscular o dolor en los huesos/articulaciones?",
+    type: "Pregunta Vitamina D"
   },
   {
     id: "Q5",
-    text: "¿Has estado expuesto poco al sol en los últimos meses?"
+    text: "¿Has estado expuesto poco al sol en los últimos meses?",
+    type: "Pregunta Vitamina D"
   },
   {
     id: "Q6",
-    text: "¿Has tenido resfriados o infecciones frecuentes en el último tiempo?"
+    text: "¿Has tenido resfriados o infecciones frecuentes en el último tiempo?",
+    type: "Pregunta Vitamina D"
   },
   {
     id: "Q7",
-    text: "¿Consumes alimentos ricos en hierro de origen animal (carne, pollo, pescado) al menos 3 veces por semana?"
+    text: "¿Consumes alimentos ricos en hierro de origen animal (carne, pollo, pescado) al menos 3 veces por semana?",
+    type: "Pregunta Ferritina"
   }
 ];
 
@@ -138,6 +146,9 @@ export function HealthDecisionWizard() {
         {!result && (
           <div className="space-y-8 lg:space-y-12">
             <div className="bg-gradient-to-r from-accent/40 to-accent/20 rounded-2xl p-8 lg:p-12 border border-accent/50 text-center">
+              <p className="text-xl lg:text-2xl xl:text-[2.25rem] xl:leading-[3rem] font-semibold leading-relaxed bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--primary-glow))] bg-clip-text text-transparent mb-4">
+                {currentQuestion.type}
+              </p>
               <p className="text-2xl lg:text-4xl xl:text-5xl font-semibold leading-relaxed text-foreground">
                 {currentQuestion.text}
               </p>
